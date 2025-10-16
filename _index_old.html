@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf Ball Rolling Into Hole Loader</title>
+<style>
+:root {
+	--bg: #0b0b0c;
+	--ball-light: #ffffff;
+	--ball-mid: #f0f0f0;
+	--ball-shadow: #cfcfcf;
+	--size: clamp(80px, 18vmin, 180px);
+}
+
+/* Layout */
+html, body {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(180deg, var(--bg) 0%, #071018 100%);
+	color: #fff;
+}
+
+/* Loader */
+.loader {
+	width: var(--size);
+	height: var(--size);
+	display: grid;
+	place-items: center;
+	position: relative;
+}
+
+/* Hole */
+.cup {
+	position: absolute;
+	width: 74%;
+	height: 74%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 18%);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.rim {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 6px solid rgba(255, 255, 255, 0.98);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+	box-sizing: border-box;
+}
+
+/* Ball */
+.ball-wrap {
+	width: 46%;
+	height: 46%;
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform-origin: 50% 140%;
+	animation: cycle 5s cubic-bezier(0.45, 0.05, 0.22, 1.0) infinite;
+}
+
+.ball {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 6%, transparent 12%),
+		radial-gradient(circle at 65% 70%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 10%, transparent 30%),
+		linear-gradient(160deg, var(--ball-light) 0%, var(--ball-mid) 60%, var(--ball-shadow) 100%);
+	box-shadow: 0 10px 24px rgba(0,0,0,0.55), inset 0 6px 18px rgba(255,255,255,0.3);
+	position: relative;
+	overflow: hidden;
+	transform: translateY(0) rotate(0deg);
+	animation: roll 1s linear infinite;
+}
+
+/* Dimples */
+.ball::after {
+	content: "";
+	position: absolute;
+	inset: 8%;
+	border-radius: 50%;
+	background-image:
+		radial-gradient(circle at 12% 12%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
+		radial-gradient(circle at 32% 10%, rgba(0,0,0,0.16) 0 2px, transparent 3px),
+		radial-gradient(circle at 52% 22%, rgba(0,0,0,0.14) 0 2px, transparent 3px),
+		radial-gradient(circle at 72% 18%, rgba(0,0,0,0.16) 0 2px, transparent 3px),
+		radial-gradient(circle at 86% 26%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
+		radial-gradient(circle at 22% 46%, rgba(0,0,0,0.12) 0 2px, transparent 3px),
+		radial-gradient(circle at 42% 58%, rgba(0,0,0,0.10) 0 2px, transparent 3px),
+		radial-gradient(circle at 62% 54%, rgba(0,0,0,0.10) 0 2px, transparent 3px),
+		radial-gradient(circle at 82% 50%, rgba(0,0,0,0.12) 0 2px, transparent 3px);
+	mix-blend-mode: multiply;
+	opacity: 0.9;
+}
+
+/* Lighting */
+.ball::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	box-shadow: inset -18px 0 40px rgba(255,255,255,0.06),
+				inset 18px 0 24px rgba(0,0,0,0.18);
+}
+
+/* Ball rolling */
+@keyframes roll {
+	0% { transform: translateY(0) rotate(0deg); }
+	100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Smooth, realistic cycle */
+@keyframes cycle {
+	0%   { transform: translateX(320%) translateY(-14%) rotate(0deg) scale(1); opacity: 0; }
+	/* Roll toward the hole */
+	72%  { transform: translateX(0%) translateY(0%) rotate(0deg) scale(1); opacity: 1; }
+	/* little pause */
+	72.5%{ transform: translateX(0%) translateY(0%) rotate(-5deg) scale(1); opacity: 1; }
+	73%  { transform: translateX(0%) translateY(0%) rotate(-10deg) scale(1); opacity: 1; }
+	73.5%{ transform: translateX(0%) translateY(0%) rotate(-16deg) scale(1); opacity: 1; }
+	74%  { transform: translateX(0%) translateY(0%) rotate(-22deg) scale(1); opacity: 1; }
+	74.5%{ transform: translateX(0%) translateY(0%) rotate(-29deg) scale(1); opacity: 1; }
+	75%  { transform: translateX(0%) translateY(0%) rotate(-36deg) scale(1); opacity: 1; }
+	75.5%{ transform: translateX(0%) translateY(0%) rotate(-44deg) scale(1); opacity: 1; }
+	76%  { transform: translateX(0%) translateY(0%) rotate(-52deg) scale(1); opacity: 1; }
+	76.5%{ transform: translateX(0%) translateY(0%) rotate(-60deg) scale(1); opacity: 1; }
+	77%  { transform: translateX(0%) translateY(0%) rotate(-68deg) scale(1); opacity: 1; }
+	77.5%{ transform: translateX(0%) translateY(0%) rotate(-77deg) scale(1); opacity: 1; }
+	78%  { transform: translateX(0%) translateY(0%) rotate(-86deg) scale(1); opacity: 1; }
+	78.5%{ transform: translateX(0%) translateY(0%) rotate(-95deg) scale(1); opacity: 1; }
+	79%  { transform: translateX(0%) translateY(0%) rotate(-104deg) scale(1); opacity: 1; }
+	79.5%{ transform: translateX(0%) translateY(0%) rotate(-113deg) scale(1); opacity: 1; }
+	80%  { transform: translateX(0%) translateY(0%) rotate(-120deg) scale(1); opacity: 1; }
+	/* sinking */
+	81%  { transform: translateX(-0.3%) translateY(1%) rotate(-130deg) scale(0.98); opacity: 1; }
+	82%  { transform: translateX(-0.6%) translateY(2%) rotate(-140deg) scale(0.96); opacity: 1; }
+	83%  { transform: translateX(-0.9%) translateY(3%) rotate(-150deg) scale(0.94); opacity: 1; }
+	84%  { transform: translateX(-1.2%) translateY(4.5%) rotate(-162deg) scale(0.91); opacity: 1; }
+	85%  { transform: translateX(-1.5%) translateY(6%) rotate(-174deg) scale(0.87); opacity: 1; }
+	86%  { transform: translateX(-1.8%) translateY(7.5%) rotate(-186deg) scale(0.83); opacity: 1; }
+	87%  { transform: translateX(-2.1%) translateY(9%) rotate(-200deg) scale(0.78); opacity: 1; }
+	88%  { transform: translateX(-2.4%) translateY(10.5%) rotate(-214deg) scale(0.73); opacity: 1; }
+	89%  { transform: translateX(-2.7%) translateY(12%) rotate(-228deg) scale(0.67); opacity: 1; }
+	90%  { transform: translateX(-2.9%) translateY(13.5%) rotate(-244deg) scale(0.61); opacity: 0.95; }
+	91%  { transform: translateX(-3.0%) translateY(15%) rotate(-260deg) scale(0.54); opacity: 0.85; }
+	92%  { transform: translateX(-3.1%) translateY(16.5%) rotate(-276deg) scale(0.47); opacity: 0.7; }
+	93%  { transform: translateX(-3.2%) translateY(18%) rotate(-292deg) scale(0.39); opacity: 0.55; }
+	94%  { transform: translateX(-3.3%) translateY(19.5%) rotate(-308deg) scale(0.31); opacity: 0.4; }
+	95%  { transform: translateX(-3.3%) translateY(21%) rotate(-324deg) scale(0.23); opacity: 0.25; }
+	96%  { transform: translateX(-3.3%) translateY(22%) rotate(-340deg) scale(0.15); opacity: 0.12; }
+	97%  { transform: translateX(-3.3%) translateY(23%) rotate(-356deg) scale(0.08); opacity: 0.05; }
+	98%  { opacity: 0; }
+	100% { transform: translateX(-1%) translateY(-14%) rotate(0deg) scale(0); opacity: 0.0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ball-wrap, .ball { animation: none; }
+}
+</style>
+</head>
+<body>
+	<div class="loader" role="status" aria-label="Loading">
+		<div class="cup"><div class="rim"></div></div>
+		<div class="ball-wrap"><div class="ball"></div></div>
+	</div>
+</body>
+</html>
