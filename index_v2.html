@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lottie Render – bkwittman_motion</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #000;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    .stage {
+      width: min(90vw, 960px);
+      aspect-ratio: 16 / 9;
+    }
+    #lottie {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+</head>
+<body>
+  <div class="stage">
+    <div id="lottie" aria-label="bkwittman_motion animation"></div>
+  </div>
+  <script id="lottieData" type="application/json">
+  {"nm":"bkwittman_motion","ddd":0,"h":1080,"w":1920,"meta":{"g":"@lottiefiles/toolkit-js 0.68.0"},"layers":[{"ty":4,"nm":"Shape Layer 2","sr":1,"st":0,"op":241,"ip":0,"ln":"19","hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-406.75,175.472,0]},"s":{"a":0,"k":[90.033,90.033,76.073]},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[514.715,762.173,0],"t":0,"ti":[-92.26,58.805,0],"to":[0,0,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[890.604,553.345,0],"t":23,"ti":[-19.6,17.647,0],"to":[1.173,-0.748,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[906.181,502.647,0],"t":34,"ti":[0,0,0],"to":[28.1,-32.147,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[960,473.952,0],"t":48,"ti":[-23.777,-21.459,0],"to":[0,0,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[1013.819,489.181,0],"t":58.249,"ti":[14.819,-14.158,0],"to":[38.777,43.959,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[1013.819,588.842,0],"t":71.999,"ti":[29.74,96.805,0],"to":[-14.819,14.158,0]},{"s":[890.604,553.345,0],"t":95.999,"ti":[0,0,0],"to":[-20.24,-110.305,0]}]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","nm":"Ellipse 1","it":[{"ty":"el","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[264.721,264.721]}},{"ty":"st","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":0},"c":{"a":0,"k":[1,1,1]}},{"ty":"fl","nm":"Fill 1","c":{"a":0,"k":[1,1,1]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[45.162,45.162]},"p":{"a":0,"k":[-406.75,175.472]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":1},{"ty":4,"nm":"Shape Layer 1","sr":1,"st":0,"op":241,"ip":0,"ln":"18","hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[20.455,-96.381,0]},"s":{"a":0,"k":[118.351,118.351,118.351]},"p":{"a":0,"k":[960,543,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","nm":"Ellipse 1","it":[{"ty":"el","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[264.721,264.721]}},{"ty":"st","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":16},"c":{"a":0,"k":[1,1,1]}},{"ty":"fl","nm":"Fill 1","c":{"a":0,"k":[0,0,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[86.717,86.717]},"p":{"a":0,"k":[20.455,-96.381]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":2},{"ty":1,"nm":"Black Solid 1","sr":1,"st":0,"op":241,"ip":0,"ln":"17","hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[960,540]},"s":{"a":0,"k":[100,100]},"p":{"a":0,"k":[960,540]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"sc":"#000000","sh":1080,"sw":1920,"ind":3}],"v":"5.7.0","fr":24,"op":97,"ip":0,"assets":[]}
+  </script>
+
+  <script>
+    const data = JSON.parse(document.getElementById('lottieData').textContent);
+    lottie.loadAnimation({
+      container: document.getElementById('lottie'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: data
+    });
+  </script>
+</body>
+</html>
